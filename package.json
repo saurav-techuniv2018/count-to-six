@@ -1,0 +1,28 @@
+{
+  "name": "count-to-six",
+  "version": "1.0.0",
+  "description": "Contains exercises from count-to-6 workshop: https://github.com/domenic/count-to-6",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/saurav-techuniv2018/count-to-six.git"
+  },
+  "keywords": [
+    "ES6",
+    "MDL",
+    "TechUniversity2018",
+    "JavaScript"
+  ],
+  "author": "Saurav Sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saurav-techuniv2018/count-to-six/issues"
+  },
+  "homepage": "https://github.com/saurav-techuniv2018/count-to-six#readme",
+  "devDependencies": {
+    "jest": "^22.1.3"
+  }
+}
