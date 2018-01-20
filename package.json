@@ -4,7 +4,7 @@
   "description": "Contains exercises from count-to-6 workshop: https://github.com/domenic/count-to-6",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest **/*.test.js"
   },
   "repository": {
     "type": "git",
