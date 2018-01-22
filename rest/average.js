@@ -5,5 +5,5 @@ module.exports = function average(...numbers) {
     accumulator + currentNumber, 0);
 
   return sum / numbers.length;
-}
-;
+};
+

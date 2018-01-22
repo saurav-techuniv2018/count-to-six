@@ -1,6 +1,6 @@
 const safelyEscape = require('./safely-escape');
 
-const html = function (stringParts, ...namedArguments) {
+function html(stringParts, ...namedArguments) {
   const safelyEscapedArguments = [];
 
   namedArguments.forEach((p) => {
@@ -19,6 +19,6 @@ const html = function (stringParts, ...namedArguments) {
   }
 
   return outputString;
-};
+}
 
 module.exports = html;
