@@ -1,13 +1,10 @@
-let minimum = function () {
-	let numbersArray = Array.prototype.slice.call(arguments);
+function minimum(...numbersArray) {
+  const minValue = numbersArray.reduce((accumulator, currentNumber) =>
+    (accumulator < currentNumber ? accumulator : currentNumber), Infinity);
 
-	let minValue = numbersArray.reduce((accumulator, currentNumber) => {
-		return accumulator < currentNumber ? accumulator : currentNumber;
-	}, Infinity);
-
-	return minValue;
+  return minValue;
 }
 
 module.exports = minimum;
 
-//console.log(`The minimum of [${process.argv.slice(2)}] is ${minimum(...process.argv.slice(2))}`);
+// console.log(`The minimum of [${process.argv.slice(2)}] is ${minimum(...process.argv.slice(2))}`);

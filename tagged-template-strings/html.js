@@ -1,23 +1,24 @@
-let safelyEscape = require('./safely-escape');
+const safelyEscape = require('./safely-escape');
 
-let html = function (stringParts, ...namedArguments) {
-	let safelyEscapedArguments = [];
+const html = function (stringParts, ...namedArguments) {
+  const safelyEscapedArguments = [];
 
-	namedArguments.forEach(p => {
-		let safeArg = safelyEscape(p.toString());
-		safelyEscapedArguments.push(safeArg);
-	});
+  namedArguments.forEach((p) => {
+    const safeArg = safelyEscape(p.toString());
+    safelyEscapedArguments.push(safeArg);
+  });
 
-	let outputString = '';
+  let outputString = '';
 
-	for (let i = 0; i < safelyEscapedArguments.length; ++i) {
-		outputString += `${stringParts[i]}${safelyEscapedArguments[i]}`;
-	}
+  for (let i = 0; i < safelyEscapedArguments.length; i += 1) {
+    outputString += `${stringParts[i]}${safelyEscapedArguments[i]}`;
+  }
 
-	if (stringParts.length === namedArguments.length + 1)
-		outputString += stringParts[stringParts.length - 1];
+  if (stringParts.length === namedArguments.length + 1) {
+    outputString += stringParts[stringParts.length - 1];
+  }
 
-	return outputString;
-}
+  return outputString;
+};
 
 module.exports = html;

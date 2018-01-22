@@ -1,9 +1,9 @@
 function userInfo(userData) {
-	let [, username, email] = userData;
-	return {
-		username,
-		email
-	};
+  const [, username, email] = userData;
+  return {
+    username,
+    email,
+  };
 }
 
 module.exports = userInfo;

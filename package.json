@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/saurav-techuniv2018/count-to-six#readme",
   "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "jest": "^22.1.3"
   }
 }

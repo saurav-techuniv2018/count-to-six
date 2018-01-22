@@ -1,58 +1,58 @@
-let safelyEscape = function (inputString) {
+const safelyEscape = (inputString) => {
+  if (inputString === '') return '';
 
-	if (inputString === '') return '';
+  const escapeSequences = [
+    {
+      char: /&/,
+      escape: '&amp;',
+    },
+    {
+      char: /'/,
+      escape: '&apos;',
+    },
+    {
+      char: /"/,
+      escape: '&quot;',
+    },
+    {
+      char: /</,
+      escape: '&lt;',
+    },
+    {
+      char: />/,
+      escape: '&gt;',
+    },
+  ];
 
-	let escapeSequences = [
-		{
-			char: /&/,
-			escape: "&amp;"
-		},
-		{
-			char: /'/,
-			escape: "&apos;"
-		},
-		{
-			char: /"/,
-			escape: "&quot;"
-		},
-		{
-			char: /</,
-			escape: "&lt;"
-		},
-		{
-			char: />/,
-			escape: "&gt;"
-		}
-	];
+  let resultString = inputString;
+  escapeSequences.forEach((p) => {
+    resultString = resultString.replace(new RegExp(p.char, 'g'), p.escape);
+  });
 
-	let resultString = inputString;
-	escapeSequences.forEach(p => {
-		resultString = resultString.replace(new RegExp(p.char, 'g'), p.escape);
-	});
+  return resultString;
+};
 
-	return resultString;
-}
+const html = (stringParts, ...namedArguments) => {
+  const safelyEscapedArguments = [];
 
-let html = function (stringParts, ...namedArguments) {
-	let safelyEscapedArguments = [];
+  namedArguments.forEach((p) => {
+    const safeArg = safelyEscape(p.toString());
+    safelyEscapedArguments.push(safeArg);
+  });
 
-	namedArguments.forEach(p => {
-		let safeArg = safelyEscape(p.toString());
-		safelyEscapedArguments.push(safeArg);
-	});
+  let outputString = '';
 
-	let outputString = '';
+  for (let i = 0; i < safelyEscapedArguments.length; i += 1) {
+    outputString += `${stringParts[i]}${safelyEscapedArguments[i]}`;
+  }
 
-	for (let i = 0; i < safelyEscapedArguments.length; ++i) {
-		outputString += `${stringParts[i]}${safelyEscapedArguments[i]}`;
-	}
+  if (stringParts.length === namedArguments.length + 1) {
+    outputString += stringParts[stringParts.length - 1];
+  }
 
-	if (stringParts.length === namedArguments.length + 1)
-		outputString += stringParts[stringParts.length - 1];
+  return outputString;
+};
 
-	return outputString;
-}
-
-let name = process.argv[2];
-let message = process.argv[3];
+const name = process.argv[2];
+const message = process.argv[3];
 console.log(html`<b>${name} says</b>: "${message}"`);
